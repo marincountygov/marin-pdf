@@ -1,35 +1,40 @@
-# APP_NAME
+# Should This Be a PDF?
 
-## About this app
+Check whether a PDF is the right format before you build one.
 
-- **Purpose:** APP_DESCRIPTION
-- **Audience:**
-- **Owner:** APP_OWNER
-- **Repo:** APP_REPO
-- **Status:** Not yet built
+A remediated (accessibility-fixed) PDF is expensive to maintain — any edit can break its accessibility formatting, which then has to be manually re-checked and fixed. This tool walks through four yes/no questions and points to the right alternative (a webpage, JotForm/Microsoft Form) when a PDF isn't actually the best format, or confirms a PDF is appropriate and what to do next.
 
-## Getting started
+## The four questions
 
-1. **Run locally** — open `index.html` directly in a browser, or serve the folder with a static web server. See [docs/development.md](docs/development.md).
-2. **Customize metadata** — replace every `APP_NAME`, `APP_DESCRIPTION`, `APP_OWNER`, and `APP_REPO` (the GitHub repo slug, e.g. `marin-cupa-fees` — used by the Updates section to know which repo's commits to show) placeholder in this file, in `index.html`, and in `marin.yml` (see "Project manifest" below).
-3. **Add app-specific functionality** — build the real workflow into `index.html`, `assets/app.css`, and `assets/app.js`, replacing the starter `#start` section. Leave `#about` and `#updates` in place — see "Standard nav" below.
+1. **Will the PDF be updated regularly?** — Yes: don't use a PDF, consider a webpage.
+2. **Can this content be a webpage instead?** — Yes: move it to a webpage on your department site.
+3. **Is this a fillable form?** — Yes: use JotForm or Microsoft Forms instead; submit a helpdesk ticket if you need help.
+4. Answering "no" to all three confirms a PDF meets requirements, and gives the remediation and submission steps.
 
-## Standard nav
+## Tabs
 
-Every app built from this template ships with About and Updates in `#app-nav`, and no "Home" tab — a tab shouldn't just point back to what's already showing by default. The app itself must be immediately functional in the default view; move info/how-to/context content into About instead of stacking it above or alongside the tool. `#start`, `#about`, and `#updates` show one at a time, matching the nav — each has `data-tab-section="…"` and `shared/app-shell.js` handles showing/hiding and syncing `aria-current` generically from that, no per-page JavaScript needed. Give any new top-level section the same `data-tab-section` value as `#start` if it belongs in the default view, or a new value (plus a nav link) if it's its own page. `#updates` also needs no JavaScript of its own beyond `data-updates-repo` and `data-app-name` (the latter is what makes the status line read "APP_NAME release notes." once commits load).
-4. **Use marin-ui** — prefer existing marin-ui components, tokens, and shell patterns before writing new CSS or JS. See `docs/development.md` for the bundle update process.
-5. **Test changes** — keyboard operation, reflow, light/dark contrast, and WAVE accessibility checks. See `docs/development.md`.
-6. **Deploy** — document the actual deployment process for this application in `docs/development.md` once it is established.
+- **Home** — the live check.
+- **About** — the full guidance as reference, for anyone who wants to read all four steps at once instead of stepping through them.
+- **Updates** — latest commits to this repo.
 
-This project was created from `marin-app-template`, template version `TEMPLATE_VERSION` at time of creation (see `TEMPLATE_VERSION` in this repo). Existing applications do not automatically inherit later template changes — see that repo's `CHANGELOG.md` if you want to selectively adopt something. Shared UI fixes and additions come from `marin-ui` instead, via the sync process in `docs/development.md`.
+## Technical notes
+
+Static HTML/CSS/JS, no build step. Uses the vendored MarinOS brand bundle (`shared/`, `vendor/`, `BRAND_VERSION`) — see `docs/development.md` for how to update it from a new `marin-ui` release. The question/outcome flow is a small fixed state machine in `assets/app.js`; there's no authoring UI since this app has exactly one flow.
 
 ## Project manifest
 
-`marin.yml` is a small, machine-readable file describing this project's name, owner, status, and the `marin-ui`/template versions it's built on — for humans, scripts, and AI agents to read without parsing prose. Keep it current: update `platform.marin-ui` after every `sync-consumer.sh` run, and `project.status` as the app moves through its lifecycle (prototype → active → maintenance → deprecated → archived).
+`marin.yml` records this project's owner, status, and the `marin-ui`/template versions it's built on. Update `platform.marin-ui` after every `sync-consumer.sh` run, and `project.status` as this moves prototype → active → maintenance.
+
+## Testing with WAVE
+
+Prefer testing a locally served HTTP URL such as `http://localhost:8000/` (`python3 -m http.server 8000`) instead of opening the page with `file://`. Firefox extensions, including WAVE, generally cannot evaluate `file://` pages unless "Allow access to file URLs" is enabled for the extension in `about:addons`.
 
 ## Related resources
 
 - [marin-digital-standards](https://github.com/marincountygov/marin-digital-standards) — accessibility, content, brand, and product-design requirements.
 - [marin-ui](https://github.com/marincountygov/marin-ui) — the implemented components, tokens, and app shell this project is built on.
 - [marin-skills](https://github.com/marincountygov/marin-skills) — AI workflows for building, reviewing, and maintaining Marin applications, including `marin-app-builder` and `app-maintainer`.
-- [`AGENTS.md`](AGENTS.md) — this file documents the template repo itself. A newly-created app should get its own app-shaped `AGENTS.md` instead (see any current app's, e.g. `marin-magic/AGENTS.md`, for the pattern to copy) — `marin-app-builder`'s build workflow creates one as part of scaffolding a new app.
+
+## License
+
+County of Marin
