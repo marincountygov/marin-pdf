@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>APP_NAME | County of Marin</title><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%23000'/%3E%3Cg fill='none' stroke='%23e5b53b' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='12' height='12' rx='2'/%3E%3Crect x='27' y='9' width='12' height='12' rx='2'/%3E%3Crect x='9' y='27' width='12' height='12' rx='2'/%3E%3Crect x='27' y='27' width='12' height='12' rx='2'/%3E%3C/g%3E%3C/svg%3E">
-    <meta name="description" content="APP_DESCRIPTION">
+    <title>Should This Be a PDF? | County of Marin</title><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='10' fill='%23000'/%3E%3Cg fill='none' stroke='%23e5b53b' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='9' y='9' width='12' height='12' rx='2'/%3E%3Crect x='27' y='9' width='12' height='12' rx='2'/%3E%3Crect x='9' y='27' width='12' height='12' rx='2'/%3E%3Crect x='27' y='27' width='12' height='12' rx='2'/%3E%3C/g%3E%3C/svg%3E">
+    <meta name="description" content="Check whether a PDF is the right format before you build one.">
     <link rel="stylesheet" href="vendor/pico.min.css">
     <link rel="stylesheet" href="shared/app-brand.css">
     <link rel="stylesheet" href="assets/app.css">
@@ -17,24 +17,36 @@
     <header class="app-header">
       <div class="app-header__inner">
         <div class="app-identity">
-          <div class="app-title-row">
+          <a href="#check" class="app-title-row">
             <span class="app-icon" aria-hidden="true">
-              <svg viewBox="0 0 48 48"><rect x="7" y="7" width="13" height="13" rx="2"/><rect x="28" y="7" width="13" height="13" rx="2"/><rect x="7" y="28" width="13" height="13" rx="2"/><rect x="28" y="28" width="13" height="13" rx="2"/></svg>
+              <svg viewBox="0 0 48 48"><path d="M13 6h17l8 8v28H13z"/><path d="M30 6v9h8"/><path d="M17 25l5 6 10-14"/></svg>
             </span>
-            <div class="app-title-copy"><h1 class="app-title">APP_NAME</h1><p class="app-subtitle">APP_DESCRIPTION</p></div>
-          </div>
+            <div class="app-title-copy"><h1 class="app-title">Should This Be a PDF?</h1><p class="app-subtitle">Check whether a PDF is the right format before you build one.</p></div>
+          </a>
         </div>
         <div class="app-header__actions">
           <button type="button" class="app-menu-toggle secondary" id="menu-toggle" aria-expanded="false" aria-controls="app-nav">Menu</button>
-          <nav class="app-nav" id="app-nav" aria-label="Application navigation"><a href="#start" aria-current="page">Start</a><a href="#about">About</a><a href="#updates">Updates</a></nav>
+          <nav class="app-nav" id="app-nav" aria-label="Application navigation"><a href="#check" aria-current="page">Home</a><a href="#about">About</a><a href="#updates">Updates</a></nav>
         </div>
       </div>
     </header>
     <main id="main" class="container app-main" tabindex="-1">
       <div id="app-status-message" role="status" aria-live="polite"></div>
-      <section id="start" class="app-page-heading" data-tab-section="start"><h2>Start the primary task</h2><p>Replace this content with the APP_NAME workflow.</p></section>
-      <section id="about" class="app-card" data-tab-section="about" hidden><h2>About</h2><p>Add task-specific and about info here.</p></section>
-      <section id="updates" class="app-card" data-tab-section="updates" data-updates-repo="APP_REPO" data-app-name="APP_NAME" hidden>
+      <section id="check" class="app-card" data-tab-section="check">
+        <div id="flow-step" tabindex="-1"></div>
+      </section>
+      <section id="about" class="app-card" data-tab-section="about" hidden>
+        <h2>About</h2>
+        <p>A remediated (accessibility-fixed) PDF is expensive to maintain — any edit can break its accessibility formatting, which then has to be manually re-checked and fixed. This tool walks through four yes/no questions and points to the right alternative when a PDF isn't actually the best format for your content.</p>
+        <h3>The full guidance</h3>
+        <ol>
+          <li><strong>Will the PDF be updated regularly?</strong> Yes: don't use a PDF — consider making it a webpage.</li>
+          <li><strong>Can this content be a webpage instead of a PDF?</strong> Yes: move the content to a webpage on your department site.</li>
+          <li><strong>Is the PDF you are creating a fillable form?</strong> Yes: create a JotForm or Microsoft Form instead. Submit a helpdesk ticket if you need assistance.</li>
+          <li>Answering "no" to all three means this meets PDF requirements. Next steps: remediate the final PDF for accessibility, then send it to helpdesk with "Remediation" in the subject line.</li>
+        </ol>
+      </section>
+      <section id="updates" class="app-card" data-tab-section="updates" data-updates-repo="marin-pdf" data-app-name="Should This Be a PDF?" hidden>
         <h2>Updates</h2>
         <p data-updates-status class="app-help-text" role="status" aria-live="polite" aria-atomic="true">Loading recent commits&hellip;</p>
         <div data-updates-list></div>

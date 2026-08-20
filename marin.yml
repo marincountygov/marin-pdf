@@ -1,12 +1,12 @@
 schema: 1
 
 project:
-  name: APP_NAME
-  repo: APP_REPO
+  name: Should This Be a PDF?
+  repo: marin-pdf
   type: app
-  owner: APP_OWNER
+  owner: County of Marin
   audience: staff
-  status: prototype
+  status: active
 
 platform:
   marin-ui: 1.14.0
@@ -14,4 +14,4 @@ platform:
 
 deployment:
   target: github-pages
-  url: https://marincountygov.github.io/APP_REPO/
+  url: https://marincountygov.github.io/marin-pdf/
