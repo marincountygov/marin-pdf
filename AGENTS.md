@@ -4,7 +4,7 @@
 
 This is a static, zero-build MarinOS application. It uses the shared `marin-ui` brand bundle (vendored via `marin-ui/scripts/sync-consumer.sh`, version recorded in `BRAND_VERSION`) and follows `marin-digital-standards`. See `marin.yml` for this project's owner, status, and platform versions.
 
-The core content is a fixed four-question decision tree in `assets/app.js` (the `steps` object) — there's no authoring UI, since this app has exactly one flow. Don't turn this into a WayMaker-style editable builder; if a second flow is ever needed, that's a signal to reconsider whether `marin-waymaker` is a better fit instead.
+The core content is a fixed four-question decision tree in `assets/app.js` (the `steps` object) — there's no authoring UI, since this app has exactly one flow. Don't turn this into a Decision Maker-style editable builder; if a second flow is ever needed, that's a signal to reconsider whether `marin-decision-maker` is a better fit instead.
 
 ## Before making changes
 
