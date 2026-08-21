@@ -4,7 +4,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const START_STEP = "updated";
 
-  // A fixed decision tree, not a WayMaker-style editable flow — this app
+  // A fixed decision tree, not a Decision Maker-style editable flow — this app
   // has exactly one flow and never needs an authoring UI. Each step's
   // "yes"/"no" is either the id of the next step, or a terminal outcome
   // object ({ title, body, steps, note }) to render directly.
